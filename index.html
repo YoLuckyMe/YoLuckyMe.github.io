@@ -11,12 +11,15 @@
 	
 	$(document).ready(function(){
 		$('#gform').on('submit', function(e) {
-			$('#gform *').fadeOut(200000);
-			$('#gform').prepend('Your submission has been processed...');
+			$('#gform *').fadeOut(200);
+			$('#btnSubmit').prop('disabled', true);
+			
+			var name = document.getElementById("entry.1427439181").value;
+			$('#gform').prepend('Hi '+name+', Your submission has been processed. Thank you');
 		});
 		
 		var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-		var element = document.getElementById('text');
+		var element = document.getElementById('result');
 		
 		if (isMobile) {
   			element.innerHTML = "You are using Mobile";
@@ -29,12 +32,11 @@
 </head>
 
 <body>
-	
+
 <div class="bg-image">
   <div class="bg-text">
     <h1 style="font-size:25px">Hi Friends, Welcome in Lucky You</h1>
     <h3>Please register yourself for upcoming Events</h3>
-	<p id="text" h1 style="font-size:0px"></p>
 	<form name="gform" id="gform" enctype="text/plain" action="https://docs.google.com/forms/d/e/1FAIpQLSdh9txZ4lS1NdwsLUDKCoeMN7II7uXv7ttq1uiVAQBrsZRMHA/formResponse?" target="hidden_iframe" onsubmit="submitted=true;">
 		<label>Name</label><br>
 		<input type="text" name="entry.1427439181" id="entry.1427439181"><br>
@@ -42,9 +44,10 @@
 		<input type="date" name="entry.1037716667" id="entry.1037716667"><br>
 		<label>Contact Number</label><br>
 		<input type="number" name="entry.834922424" id="entry.834922424"><br>
-		<label>Interested In</label><br>
+		<label>Interested In(PUBG, FreeFIRE, LUDO, CHESS etc)</label><br>
 		<input type="text" name="entry.923906614" id="entry.923906614"><br>
-		<input type="submit" value="Submit">
+		<input id="btnSubmit" type="submit" value="Submit"><br>
+		<label id="result"></label>
 	</form>
 
 	<iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted) {}">
